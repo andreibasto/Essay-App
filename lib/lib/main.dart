@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-        navigatorKey: navigatorKey,
+        //navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         home: MainPage(),
   );
