@@ -1,7 +1,7 @@
-import 'package:essay_app_login/profile_screen.dart';
+import 'package:essay_app_login/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({Key? key}) : super(key: key);
@@ -14,6 +14,7 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  bool ispasswordandemailfound = true;
 
   @override
   void dispose() {
@@ -43,24 +44,56 @@ class _LoginWidgetState extends State<LoginWidget> {
           ),
           SizedBox(height: 44,
           ),
-          TextField(
-            controller: emailController,
-            keyboardType: TextInputType.emailAddress,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'User Name',
-            ),
+          Container(
+            child: ispasswordandemailfound ?
+              TextField(
+                controller: emailController,
+                keyboardType: TextInputType.emailAddress,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'User Name',
+                ),
+              ) :
+              TextField(
+                controller: emailController,
+                keyboardType: TextInputType.emailAddress,
+                decoration: const InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0xffd32f2f),
+                      width: 1,
+                    ),
+                  ),
+                    labelText: 'User Name',
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xffd32f2f),
+                        width: 2,
+                      ),
+                    ),
+                ),
+              ),
           ),
           SizedBox(height: 26,
           ),
-          TextField(
-            controller: passwordController,
-            obscureText: true,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Password',
-              errorText: "Password or email is incorrect",
-            ),
+          Container(
+            child: ispasswordandemailfound ?
+              TextField(
+                controller: passwordController,
+                obscureText: true,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Password',
+                ),
+              )        :
+              TextField(
+                controller: passwordController,
+                obscureText: true,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  errorText: "Password or email is incorrect",
+                ),
+              ),
           ),
           TextButton(
             onPressed: () {
@@ -69,7 +102,12 @@ class _LoginWidgetState extends State<LoginWidget> {
             },
             child: const Text('Forgot Password?',),
           ),
-          const SizedBox(height: 88,
+          TextButton(
+            onPressed: (){},
+            child: Text("Don't have an account?  Sign up"),
+
+          ),
+          const SizedBox(height: 70,
           ),
           Container(
             width: double.infinity,
@@ -91,12 +129,6 @@ class _LoginWidgetState extends State<LoginWidget> {
   }
 
   Future signIn() async {
-    //
-    // showDialog(
-    //     context: context,
-    //     barrierDismissible: false,
-    //     builder: (context) => Center(child: CircularProgressIndicator()),
-    );
 
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -104,9 +136,9 @@ class _LoginWidgetState extends State<LoginWidget> {
         password: passwordController.text.trim(),
       );
     } on FirebaseAuthException catch (e) {
+      ispasswordandemailfound = false;
       print(e);
+      runApp(MyApp());
     }
-    // navigatorkey.currentState!.popUntil((route) => route.isFirst);
-
   }
 }
