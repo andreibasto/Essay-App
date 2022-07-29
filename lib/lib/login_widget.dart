@@ -96,7 +96,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     //     context: context,
     //     barrierDismissible: false,
     //     builder: (context) => Center(child: CircularProgressIndicator()),
-    );
+    // );
 
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
