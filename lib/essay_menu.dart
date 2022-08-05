@@ -14,9 +14,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('Profile screen',
+            SizedBox(height: 60,),
+            const Text('Essays',
               style: TextStyle(
               fontSize: 40,
               ),

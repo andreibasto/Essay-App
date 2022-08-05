@@ -109,14 +109,17 @@ class _LoginWidgetState extends State<LoginWidget> {
           RichText(
             text: TextSpan(
               style: TextStyle(
-                  color: Colors.black
+                  color: Colors.black,
               ),
               text: "  Don't have an account?  ",
               children: [
                 TextSpan(
                   recognizer: TapGestureRecognizer()
                     ..onTap = widget.onClickedSignUp,
-                  text: 'Sign up'
+                  style: TextStyle(
+                    color: Colors.blue,
+                  ),
+                  text: 'Sign up',
                 ),
               ],
             ),

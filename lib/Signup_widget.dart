@@ -96,6 +96,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                 TextSpan(
                   recognizer: TapGestureRecognizer()
                       ..onTap = widget.onClickedSignIn,
+                  style: TextStyle(
+                    color: Colors.blue,
+                  ),
                   text: " Log In"
                 ),
               ],
