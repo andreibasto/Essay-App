@@ -1,8 +1,10 @@
-import 'package:essay_app_login/login_widget.dart';
+import 'package:essay_app_login/Utils.dart';
+import 'package:essay_app_login/Auth_page.dart';
 import 'package:essay_app_login/profile_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+
 
 
 
@@ -13,7 +15,7 @@ Future main() async {
   runApp(MyApp());
 }
 
-// final navigatorkey = GlobalKey<NavigatorState>();
+final navigatorkey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
   static final String title = 'FireBase Auth';
@@ -35,7 +37,7 @@ class MainPage extends StatelessWidget {
         if (snapshot.hasData) {
           return ProfileScreen();
         } else {
-          return LoginWidget();
+          return AuthPage();
         }
       },
     ),

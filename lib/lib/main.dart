@@ -13,14 +13,12 @@ Future main() async {
   runApp(MyApp());
 }
 
-// final navigatorkey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
   static final String title = 'FireBase Auth';
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-        //navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         home: MainPage(),
   );
