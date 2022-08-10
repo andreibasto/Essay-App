@@ -2,6 +2,7 @@ import 'package:essay_app_login/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:essay_app_login/Reset_password_screen.dart';
 
 
 class LoginWidget extends StatefulWidget {
@@ -55,7 +56,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'User Name',
+                  labelText: 'Email',
                 ),
               ) :
               TextField(
@@ -99,13 +100,21 @@ class _LoginWidgetState extends State<LoginWidget> {
                 ),
               ),
           ),
+
+
           TextButton(
             onPressed: () {
               print("too bad");
               //forgot password screen thing
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Resetpasswordwidget()
+                ),
+              );
             },
             child: const Text('Forgot Password?',),
           ),
+
           RichText(
             text: TextSpan(
               style: TextStyle(
