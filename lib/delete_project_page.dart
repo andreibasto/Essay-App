@@ -2,27 +2,7 @@ import 'package:essay_app_login/essay_menu.dart';
 import 'package:flutter/material.dart';
 
 
-final List<String> TemporaryList = <String>['Pizza','Pizza','Pizza','Pizza','Pizza','Pizza','Pizza',];
-
-
-// var testList = ["whale", "fish", "shark"];
-
-class ProjectSources {
-  List<String> Sources = <String>[];
-
-  ProjectSources() {
-
-  }
-}
-
-class DeletedProjectsInfo {
-  late String Title;
-  late String DateDeleted;
-  // List<ProjectSources> Sources;
-
-  DeletedProjectsInfo(this.Title, this.DateDeleted, /*this.Sources*/);
-
-}
+final List<String> TemporaryList = <String>['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15',];
 
 
 
@@ -41,6 +21,28 @@ class _RecoverDeletedProjectsState extends State<RecoverDeletedProjects> {
     child: Column(
       children: [
         SizedBox(height: 80,),
+
+
+        Container(
+          height: 500,
+          child: ListView.builder(
+            padding: const EdgeInsets.all(8),
+              itemCount: TemporaryList.length,
+              itemBuilder: (BuildContext context, int index) {
+              return Container(
+                height: 50,
+                margin: EdgeInsets.all(2),
+                color: Colors.grey,
+                child: Center(
+                  child: Text(
+                    style: TextStyle(fontSize: 20),
+                    '${TemporaryList[index]}'),
+                ),
+              );
+            }
+          ),
+        ),
+        SizedBox(height: 20,),
         ElevatedButton(
           style: ElevatedButton.styleFrom(
             primary: Colors.blue,
@@ -48,21 +50,6 @@ class _RecoverDeletedProjectsState extends State<RecoverDeletedProjects> {
           onPressed: () {Navigator.of(context).pop();
           },
           child: Text('Back'),
-        ),
-
-        Container(
-          height: 200,
-          child: ListView.builder(
-            padding: const EdgeInsets.all(8),
-              itemBuilder: (BuildContext context, int index) {
-              return Container(
-                height: 50,
-                child: Center(
-                  child: Text('test'),
-                ),
-              );
-            }
-          ),
         ),
 
       ],
